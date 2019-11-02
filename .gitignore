@@ -2,7 +2,7 @@
 *\.vs
 *\bin
 *\obj
-**/[Pp]ackages/
-!**/[Pp]ackages/
-*\*.user
+**/[Pp]ackages/*
+!**/[Pp]ackages/*
+*.user
 *.nupkg
