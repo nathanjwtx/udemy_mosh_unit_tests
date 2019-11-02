@@ -2,7 +2,8 @@
 *\.vs
 *\bin
 *\obj
-*/[Pp]ackages/*
-!*/[Pp]ackages/*
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/*
+
 *.user
 *.nupkg
