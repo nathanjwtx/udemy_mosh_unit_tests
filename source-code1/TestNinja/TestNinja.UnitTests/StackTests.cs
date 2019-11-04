@@ -10,6 +10,17 @@ namespace TestNinja.UnitTests
     [TestFixture]
     public class StackTests
     {
+        private Fundamentals.Stack<int> _stack;
+
+        [SetUp]
+        public void Setup()
+        {
+            _stack = new Fundamentals.Stack<int>();
+            _stack.Push(1);
+            _stack.Push(2);
+            _stack.Push(3);
+        }
+
         [Test]
         public void Push_Three_Int_To_New_Stack_Return_Count_Of_3()
         {
@@ -71,14 +82,33 @@ namespace TestNinja.UnitTests
         [Test]
         public void Pop_Removes_Popped_Item_From_List()
         {
-            Fundamentals.Stack<int> numbers = new Fundamentals.Stack<int>();
-            numbers.Push(1);
-            numbers.Push(2);
-            numbers.Push(3);
-
-            numbers.Pop();
+            _stack.Pop();
             
-            Assert.AreEqual(numbers.Count, 2);
+            Assert.AreEqual(_stack.Count, 2);
+        }
+
+        [Test]
+        public void Peek_Return_Last_Item_In_Stack()
+        {
+            int actualResult = _stack.Peek();
+
+            Assert.AreEqual(actualResult, 3);
+        }
+
+        [Test]
+        public void Peek_Throws_InvalidOperationException_When_Stack_Is_Empty()
+        {
+            Fundamentals.Stack<string> strings = new Fundamentals.Stack<string>();
+
+            Assert.Throws<InvalidOperationException>(() => strings.Peek());
+        }
+
+        [Test]
+        public void Peek_Does_Not_Remove_Last_Item_From_Stack()
+        {
+            _stack.Peek();
+
+            Assert.AreEqual(_stack.Count, 3);
         }
     }
 }
